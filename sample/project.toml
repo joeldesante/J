@@ -1,0 +1,7 @@
+[details]
+name = "sample-project"
+author = "Joel DeSante"
+version = "1.2.4-beta"
+
+[dependencies]
+bukkit = { version = "12.2.3" }
