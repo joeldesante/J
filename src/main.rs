@@ -1,15 +1,11 @@
 use clap::{arg, command, Command};
-
-struct JavaProject {
-    name: String,
-    version: String,
-    author: String,
-    java_path: String
-}
+use crate::project::*;
 
 // fn generate_java_project(project_name: String) -> JavaProject {
 //    
 // }
+
+mod project;
 
 fn main() {
     let matches = command!() // requires `cargo` feature
@@ -33,12 +29,28 @@ fn main() {
         )
         .get_matches();
 
+    
+    
     match matches.subcommand() {
         Some(("build", sub_matches)) => {
             let process = match std::process::Command::new("ls").spawn() {
                 Ok(process) => process,
                 Err(err) => panic!("Running process error: {}", err),
             };
+        },
+        Some(("init", sub_matches)) => {
+            println!("Init!");
+            let project = Project {
+                name: "String".to_string(),
+                version: "String".to_string(),
+                author: "String".to_string(),
+                java_path: "String".to_string()
+            };
+            
+            generate_project_toml(project)
+        },
+        Some(("add", sub_matches)) => {
+            println!("Add Dep!");
         },
         _ => unreachable!("Exhausted list of subcommands and subcommand_required prevents `None`"),
     }
