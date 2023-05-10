@@ -40,11 +40,15 @@ fn main() {
         },
         Some(("init", sub_matches)) => {
             println!("Init!");
+            
             let project = Project {
-                name: "String".to_string(),
-                version: "String".to_string(),
-                author: "String".to_string(),
-                java_path: "String".to_string()
+                details: Details {
+                    name: "String".to_string(),
+                    version: "String".to_string(),
+                    author: "String".to_string(),
+                    java_path: "String".to_string()
+                },
+                dependancies: Vec::new()
             };
             
             generate_project_toml(project)

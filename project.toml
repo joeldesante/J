@@ -1,3 +1,6 @@
+dependancies = []
+
+[details]
 name = "String"
 version = "String"
 author = "String"
